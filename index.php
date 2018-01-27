@@ -11,8 +11,8 @@
 $uri = "mongodb://127.0.0.1";
 $options = array(); 
 // $m = new MongoClient($uri, $options);
-$m = new MongoDB\Driver\Manager($uri);
-// $m = new MongoClient();
+// $m = new MongoDB\Driver\Manager($uri);
+$m = new MongoClient();
 
 // select a database
 $db = $m->test;

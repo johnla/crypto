@@ -16,6 +16,8 @@
 # Instantiates a client
 # client = language.LanguageServiceClient()
 
+import config
+
 # import libraries
 import urllib2
 from bs4 import BeautifulSoup
@@ -27,7 +29,7 @@ import json
 from pymongo import MongoClient
 from datetime import datetime
 # client = MongoClient()
-client = MongoClient("mongodb://www.m0d.com:27017")
+client = MongoClient("mongodb://"+config.mongodb_cred['uri'] +":"+config.mongodb_cred['port'])
 db = client.crypto
 # client = MongoClient("mongodb://mongodb0.example.net:27017")
 

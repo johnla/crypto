@@ -1,5 +1,6 @@
+import config
 from pymongo import MongoClient
-client = MongoClient("mongodb://www.m0d.com:27017")
+client = MongoClient("mongodb://"+config.mongodb_cred['uri'] +":"+config.mongodb_cred['port'])
 db = client.crypto
 # print str(db.coins.find().count()) + ' coins'
 

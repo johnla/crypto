@@ -12,7 +12,8 @@ db = client.crypto
 # client = MongoClient("mongodb://mongodb0.example.net:27017")
 
 from pymongo import MongoClient
-client = MongoClient("mongodb://www.m0d.com:27017")
+#client = MongoClient("mongodb://www.m0d.com:27017")
+client = MongoClient("mongodb://"+config.mongodb_cred['uri'] +":"+config.mongodb_cred['port'])
 db = client.crypto  
 
 coins_page = 'https://api.coinmarketcap.com/v1/ticker/'
@@ -31,7 +32,7 @@ for f in coins_page_data:
             "price_usd": f['price_usd'],
             "price_btc": f['price_btc'],
             "percent_change_1h": f['percent_change_1h'],
-            "source": f['coinmarketcap'],
+            "source": 'coinmarketcap',
             "source_updated": f['last_updated'],
             "datetime_added":datetime.utcnow()
         }

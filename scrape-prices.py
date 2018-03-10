@@ -4,17 +4,13 @@ from bs4 import BeautifulSoup
 
 import json
 import config
+import scrape_coin
 from pymongo import MongoClient
 from datetime import datetime
 # client = MongoClient()
 client = MongoClient("mongodb://"+config.mongodb_cred['uri'] +":"+config.mongodb_cred['port'])
 db = client.crypto
 # client = MongoClient("mongodb://mongodb0.example.net:27017")
-
-from pymongo import MongoClient
-#client = MongoClient("mongodb://www.m0d.com:27017")
-client = MongoClient("mongodb://"+config.mongodb_cred['uri'] +":"+config.mongodb_cred['port'])
-db = client.crypto  
 
 coins_page = 'https://api.coinmarketcap.com/v1/ticker/'
 # query the website and return the html to thfe variable page
@@ -39,3 +35,4 @@ for f in coins_page_data:
     )
   else:
     print f['id'] + ' not found.'
+    scrape_coin.scrapeCoin(f['id'])
